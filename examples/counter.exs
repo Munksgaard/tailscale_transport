@@ -33,7 +33,7 @@ PhoenixPlayground.start(
     url: [host: "counter"],
     http: [
       ip: :any,
-      port: 2000,
+      port: 80,
       thousand_island_options: [
         transport_module: TailscaleTransport,
         transport_options: [hostname: "counter"]

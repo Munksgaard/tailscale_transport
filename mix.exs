@@ -29,7 +29,7 @@ defmodule TailscaleTransport.MixProject do
   defp deps do
     [
       {:thousand_island, "~> 1.3.12"},
-      {:gen_tailscale, "~> 0.1.0"},
+      {:gen_tailscale, "~> 0.1.1"},
       {:plug, "~> 1.15"},
       {:req, "~> 0.5"},
 
