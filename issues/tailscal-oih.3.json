@@ -9,9 +9,15 @@
   "id": "tailscal-oih.3",
   "labels": [],
   "parent": "tailscal-oih",
+  "comments": [
+    {
+      "text": "Sketch complete: lib/gen_tailscale/listener.ex (~110 lines). GenServer managing Tailscale device lifecycle + listener. Splits tailscale opts from socket opts.",
+      "timestamp": "2026-05-14T09:08:19Z"
+    }
+  ],
   "priority": 2,
   "status": "in_progress",
   "title": "Implement GenTailscale.Listener GenServer",
   "type": "task",
-  "updated_at": "2026-05-14T09:06:36Z"
+  "updated_at": "2026-05-14T09:08:19Z"
 }
