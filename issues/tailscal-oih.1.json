@@ -11,11 +11,15 @@
     {
       "text": "Change committed on branch pm/tcp-recv-max-len in ~/src/tailscale-rs.\n4 files, 38 lines added:\n- tcp.rs: new tcp_recv_max NIF using TcpStream::recv(\u0026mut buf) with sized buffer\n- native.ex: tcp_recv_max/2 NIF stub\n- stream.ex: recv/2 public API (max_bytes=0 falls back to recv/1)\n- erlang.ex: recv/2 erlang re-export\n\nThe underlying TcpStream::recv already supports max_len — it was just\nnot exposed through the NIF. No changes needed to tailscale-rs core.\n\nReady to push and open a PR against tailscale/tailscale-rs.",
       "timestamp": "2026-05-14T09:45:08Z"
+    },
+    {
+      "text": "Pushed to fork: Munksgaard/tailscale-rs branch pm/tcp-recv-max-len. PR not opened yet.",
+      "timestamp": "2026-05-14T09:53:41Z"
     }
   ],
   "priority": 2,
   "status": "in_progress",
   "title": "Upstream recv-with-length to ts_elixir",
   "type": "task",
-  "updated_at": "2026-05-14T09:45:08Z"
+  "updated_at": "2026-05-14T09:53:41Z"
 }
