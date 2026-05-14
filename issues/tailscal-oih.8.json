@@ -1,5 +1,5 @@
 {
-  "assignee": "",
+  "assignee": "Philip Munksgaard",
   "blocked_by": [
     "tailscal-oih.4",
     "tailscal-oih.9"
@@ -11,8 +11,8 @@
   "labels": [],
   "parent": "tailscal-oih",
   "priority": 2,
-  "status": "open",
+  "status": "in_progress",
   "title": "Test suite: unit, integration, and property tests",
   "type": "task",
-  "updated_at": "2026-05-14T09:20:48Z"
+  "updated_at": "2026-05-14T11:08:40Z"
 }
