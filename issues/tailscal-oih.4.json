@@ -6,7 +6,8 @@
   ],
   "blocks": [
     "tailscal-oih.5",
-    "tailscal-oih.6"
+    "tailscal-oih.6",
+    "tailscal-oih.8"
   ],
   "created": "2026-05-14T09:04:27Z",
   "description": "Top-level API module providing gen_tcp-compatible interface.\nThin wrapper dispatching to Listener and Socket GenServers.\n\ndefmodule GenTailscale do\n  # Listener operations\n  listen(port, opts) → {:ok, listener} | {:error, reason}\n  accept(listener) → {:ok, socket} | {:error, reason}\n  accept(listener, timeout) → {:ok, socket} | {:error, reason}\n\n  # Socket operations (delegate to GenTailscale.Socket)\n  send(socket, data)\n  recv(socket, length)\n  recv(socket, length, timeout)\n  controlling_process(socket, pid)\n  close(socket)\n  shutdown(socket, how)\n\n  # Info (work on both listeners and sockets)\n  setopts(socket_or_listener, opts)\n  getopts(socket_or_listener, opts)\n  sockname(socket_or_listener)\n  peername(socket)\n  port(socket_or_listener)\n  getstat(socket)\n  getstat(socket, opts)\nend\n\nThe socket/listener references should be opaque but pattern-matchable\nfor active-mode messages. Consider using a struct or tagged tuple.",

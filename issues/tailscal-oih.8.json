@@ -1,6 +1,8 @@
 {
   "assignee": "",
-  "blocked_by": [],
+  "blocked_by": [
+    "tailscal-oih.4"
+  ],
   "blocks": [],
   "created": "2026-05-14T09:04:58Z",
   "description": "Thorough test coverage for the new GenTailscale implementation.\n\nUnit tests:\n  - Socket option management (setopts/getopts round-trip)\n  - Recv buffer logic (partial reads, exact length, length=0)\n  - Controlling process transfer\n  - Active mode state machine (false → once → data → false)\n  - Active N countdown\n  - Message tag configuration\n  - Close/shutdown behavior\n\nIntegration tests (require running tailscale or headscale):\n  - Listen → accept → send → recv round-trip\n  - Multiple concurrent connections\n  - Large data transfer (verify integrity)\n  - Close during pending recv\n  - SSL handshake + data transfer\n  - Controlling process transfer with in-flight data\n\nProperty tests (StreamData):\n  - Arbitrary binary data survives send/recv intact\n  - recv(socket, n) always returns exactly n bytes (or error)\n  - Active mode messages delivered in order without loss/duplication\n  - Concurrent send/recv from multiple processes\n\nReference: OTP's gen_tcp_SUITE.erl for applicable test cases.\nConsider headscale for CI-friendly integration testing.",
@@ -11,5 +13,5 @@
   "status": "open",
   "title": "Test suite: unit, integration, and property tests",
   "type": "task",
-  "updated_at": "2026-05-14T09:04:58Z"
+  "updated_at": "2026-05-14T09:05:06Z"
 }
