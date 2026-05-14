@@ -1,0 +1,15 @@
+{
+  "assignee": "",
+  "blocked_by": [],
+  "blocks": [],
+  "created": "2026-05-14T09:04:12Z",
+  "description": "Core GenServer wrapping a ts_elixir Tailscale.Tcp.Stream handle.\n\nState:\n  - stream: Tailscale.Tcp.Stream.t() (opaque NIF resource)\n  - owner: pid() (controlling process)\n  - owner_mon: reference()\n  - active: false | :once | true | integer()\n  - mode: :binary | :list\n  - buffer: binary() (for recv-with-length buffering)\n  - packet: 0 (raw) — needed for SSL compat\n  - header: 0 — needed for SSL compat\n  - packet_size: 0 — needed for SSL compat\n  - reader_task: reference() | nil (for active mode background reads)\n  - remote_addr: {ip, port}\n  - local_addr: {ip, port}\n  - message_tags: {data_tag, closed_tag, error_tag, passive_tag} — configurable for SSL cb_info\n\nPublic API (gen_tcp-compatible):\n  - send(socket, data) → :ok | {:error, reason}\n  - recv(socket, length, timeout) → {:ok, data} | {:error, reason}\n  - recv(socket, length) → recv(socket, length, :infinity)\n  - controlling_process(socket, pid) → :ok | {:error, reason}\n  - setopts(socket, opts) → :ok | {:error, reason}\n  - getopts(socket, opts) → {:ok, opts} | {:error, reason}\n  - close(socket) → :ok\n  - shutdown(socket, how) → :ok | {:error, reason}\n  - sockname(socket) → {:ok, {ip, port}} | {:error, reason}\n  - peername(socket) → {:ok, {ip, port}} | {:error, reason}\n  - port(socket) → {:ok, port} | {:error, reason}\n  - getstat(socket) → {:ok, stats}\n  - getstat(socket, opts) → {:ok, stats}\n\nActive mode:\n  When active != false, spawn a Task to call NIF recv.\n  On data: send {data_tag, socket_ref, data} to owner.\n  On :once, revert to false after one message.\n  On true, re-arm immediately.\n  On N, decrement and send {passive_tag, socket_ref} when reaching 0.\n\nRecv buffering:\n  If ts_elixir recv returns more than requested, store remainder in buffer.\n  If ts_elixir recv returns less than requested (length \u003e 0), accumulate until enough.\n  If length == 0, return whatever is available.",
+  "id": "tailscal-oih.2",
+  "labels": [],
+  "parent": "tailscal-oih",
+  "priority": 2,
+  "status": "open",
+  "title": "Implement GenTailscale.Socket GenServer",
+  "type": "task",
+  "updated_at": "2026-05-14T09:04:12Z"
+}
