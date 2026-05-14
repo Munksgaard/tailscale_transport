@@ -5,6 +5,7 @@
     "tailscal-oih.9"
   ],
   "blocks": [],
+  "closed_at": "2026-05-14T11:38:35Z",
   "created": "2026-05-14T09:04:58Z",
   "description": "Thorough test coverage using deterministic simulation + property-based testing.\n\n## Testing Architecture\n\nThree layers:\n1. Unit tests — pure logic (buffer management, option parsing)\n2. Simulation tests — GenServer against the Simulator transport\n3. Integration tests — GenServer against real ts_elixir (optional, CI needs headscale)\n\n## Simulation Property Tests (core of the test suite)\n\nUse StreamData to generate:\n  - Random sequences of operations: send, recv, setopts, controlling_process, close\n  - Random fault schedules: partial reads, drops, delays, connection failures\n  - Random data: arbitrary binaries of various sizes\n  - Random active mode transitions: false → once → N → true → false\n\nInvariants to verify (safety properties):\n  - Data integrity: bytes sent == bytes received, in order, no duplication\n  - Recv length: recv(socket, n) returns exactly n bytes (or error)\n  - Active mode delivery: all data delivered as messages, in order\n  - Controlling process: messages always go to current owner\n  - Close semantics: no messages/replies after close\n  - Option round-trip: getopts returns what setopts set\n\nLiveness properties (TigerBeetle-style):\n  - After faults heal, pending recv eventually completes\n  - After faults heal, active mode eventually delivers buffered data\n  - After controlling_process, new owner eventually receives\n\n## Deterministic Replay\n\nEvery test run logs its seed. On failure:\n  - Print seed for reproduction\n  - Replay with same seed produces identical execution\n  - Simulator logs full event trace for debugging\n\n## Reference\n\n- sled.rs/simulation.html — transport behaviour separation\n- TigerBeetle VOPR — safety then liveness testing\n- OTP gen_tcp_SUITE.erl — applicable test cases for compatibility",
   "id": "tailscal-oih.8",
@@ -21,8 +22,8 @@
     }
   ],
   "priority": 2,
-  "status": "in_progress",
+  "status": "closed",
   "title": "Test suite: unit, integration, and property tests",
   "type": "task",
-  "updated_at": "2026-05-14T11:37:30Z"
+  "updated_at": "2026-05-14T11:38:35Z"
 }
