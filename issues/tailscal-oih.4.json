@@ -14,9 +14,15 @@
   "id": "tailscal-oih.4",
   "labels": [],
   "parent": "tailscal-oih",
+  "comments": [
+    {
+      "text": "Sketch complete: lib/gen_tailscale.ex (~170 lines). Thin API module delegating to Socket and Listener GenServers.",
+      "timestamp": "2026-05-14T09:08:19Z"
+    }
+  ],
   "priority": 2,
   "status": "open",
   "title": "Implement GenTailscale API module",
   "type": "task",
-  "updated_at": "2026-05-14T09:05:06Z"
+  "updated_at": "2026-05-14T09:08:19Z"
 }
