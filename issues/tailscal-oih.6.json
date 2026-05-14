@@ -10,9 +10,15 @@
   "id": "tailscal-oih.6",
   "labels": [],
   "parent": "tailscal-oih",
+  "comments": [
+    {
+      "text": "Sketch complete: lib/tailscale_transport/ssl.ex (~120 lines). Uses :ssl with cb_info pointing to GenTailscale. Almost identical structure to ThousandIsland's built-in SSL transport.",
+      "timestamp": "2026-05-14T09:08:19Z"
+    }
+  ],
   "priority": 2,
   "status": "open",
   "title": "Implement TailscaleTransport.SSL",
   "type": "task",
-  "updated_at": "2026-05-14T09:05:06Z"
+  "updated_at": "2026-05-14T09:08:19Z"
 }
