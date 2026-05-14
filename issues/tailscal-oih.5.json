@@ -12,9 +12,15 @@
   "id": "tailscal-oih.5",
   "labels": [],
   "parent": "tailscal-oih",
+  "comments": [
+    {
+      "text": "Sketch complete: lib/tailscale_transport.ex rewritten (~130 lines). Much simpler — just delegates to GenTailscale. sendfile uses pread+send instead of :file.sendfile (no real FD).",
+      "timestamp": "2026-05-14T09:08:19Z"
+    }
+  ],
   "priority": 2,
   "status": "open",
   "title": "Update TailscaleTransport to use new GenTailscale",
   "type": "task",
-  "updated_at": "2026-05-14T09:05:06Z"
+  "updated_at": "2026-05-14T09:08:19Z"
 }
