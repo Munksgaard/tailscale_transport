@@ -1,0 +1,15 @@
+{
+  "assignee": "",
+  "blocked_by": [],
+  "blocks": [],
+  "created": "2026-05-14T09:03:59Z",
+  "description": "ts_elixir's Tailscale.Tcp.Stream.recv/1 returns whatever data is available with no length parameter.\ngen_tcp's recv/3 takes (socket, length, timeout) where length=0 means \"return available\" and length\u003e0 means \"return exactly N bytes\".\n\nOptions:\n1. Add recv/2 (stream, max_bytes) to ts_elixir NIF — Rust side reads up to N bytes\n2. Add recv/3 (stream, max_bytes, timeout) — with timeout support\n3. Handle buffering entirely in Elixir (works but less efficient — double copy)\n\nPreferred: option 2 if feasible in tailscale-rs, otherwise option 3 as fallback.\nFile upstream PR against https://github.com/tailscale/tailscale-rs",
+  "id": "tailscal-oih.1",
+  "labels": [],
+  "parent": "tailscal-oih",
+  "priority": 2,
+  "status": "open",
+  "title": "Upstream recv-with-length to ts_elixir",
+  "type": "task",
+  "updated_at": "2026-05-14T09:03:59Z"
+}
