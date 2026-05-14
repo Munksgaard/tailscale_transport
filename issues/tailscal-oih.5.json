@@ -4,7 +4,8 @@
     "tailscal-oih.4"
   ],
   "blocks": [
-    "tailscal-oih.6"
+    "tailscal-oih.6",
+    "tailscal-oih.7"
   ],
   "created": "2026-05-14T09:04:35Z",
   "description": "Rewrite lib/tailscale_transport.ex to use the new GenTailscale module\ninstead of :gen_tailscale/:gen_tailscale_socket.\n\nThis should be mostly a simplification — the new API is designed\nto match what ThousandIsland.Transport needs.\n\nKey changes:\n  - listen: call GenTailscale.listen/2, pass through tailscale config opts\n  - accept: call GenTailscale.accept/1\n  - send/recv: delegate to GenTailscale\n  - setopts/getopts: delegate to GenTailscale\n  - controlling_process: delegate to GenTailscale\n  - sockname/peername: delegate to GenTailscale\n  - getstat: delegate to GenTailscale\n  - close/shutdown: delegate to GenTailscale",
