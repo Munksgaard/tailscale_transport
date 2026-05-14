@@ -15,11 +15,15 @@
     {
       "text": "Sketch complete. Three-layer architecture:\n\n1. GenTailscale.Transport (behaviour, 77 lines) — abstract I/O contract\n2. GenTailscale.Transport.TsElixir (60 lines) — delegates to ts_elixir NIFs  \n3. GenTailscale.Transport.Simulator (472 lines) — deterministic sim with:\n   - Seeded PRNG for all randomness\n   - In-memory connection buffers (bidirectional)\n   - Fault injection: partial reads, send failures, connection drops\n   - Accept parking (callers block until simulate_client_connect)\n   - Event log for debugging\n   - Test helpers: inject_data, simulate_client_connect, event_log\n\nSocket and Listener updated to take transport as first arg, never call NIFs directly.\nAll files in gen_tailscale repo (separate from tailscale_transport).",
       "timestamp": "2026-05-14T09:24:57Z"
+    },
+    {
+      "text": "Updated:\n- Simulator moved to test/support/simulator.ex (not in lib/)\n- recv now parks callers when buffer empty, unparks on inject_data\n- accept already parked, unchanged\n- Renamed buffer fields for clarity: server_recv_buf (what server reads), client_recv_buf (what server writes)\n- Added do_close_stream helper that unparks waiting recv callers with {:error, :closed}\n- Added unpark_all_with_error for clean teardown of parked callers on close\n- Added read_server_sent/2 test helper to inspect what server has sent\n- Added inject_data logging and recv_parked/recv_unparked events",
+      "timestamp": "2026-05-14T09:35:48Z"
     }
   ],
   "priority": 2,
   "status": "in_progress",
   "title": "Design Transport behaviour and deterministic simulator",
   "type": "task",
-  "updated_at": "2026-05-14T09:24:57Z"
+  "updated_at": "2026-05-14T09:35:48Z"
 }
