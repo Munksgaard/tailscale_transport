@@ -3,12 +3,12 @@
   "blocked_by": [],
   "blocks": [],
   "created": "2026-05-14T09:03:51Z",
-  "description": "Rewrite gen_tailscale from scratch in Elixir, replacing the current stack:\n  tailscale_transport → gen_tailscale (Erlang, forked gen_tcp_socket) → libtailscale (C NIF → Go)\nwith:\n  tailscale_transport → gen_tailscale (clean Elixir GenServer) → ts_elixir (Rustler NIF → tailscale-rs)\n\nGoals:\n- Clean, understandable code (~500-700 lines vs ~2700)\n- gen_tcp-compatible API surface (listen/accept/send/recv/setopts/controlling_process)\n- SSL support via :ssl cb_info\n- ThousandIsland transport (TCP + SSL)\n- Thorough unit, integration, and property testing\n- Upstream recv-with-length to tailscale-rs/ts_elixir\n\nKey design decisions:\n- GenServer per socket wrapping ts_elixir opaque NIF handles\n- Recv buffering (ts_elixir recv has no length param)\n- Active mode (:once/:true/N) with configurable message tags\n- Socket options stored in GenServer state (mode, active, packet, etc.)",
+  "description": "Rewrite gen_tailscale from scratch in Elixir (separate repo), replacing:\n  tailscale_transport → gen_tailscale (Erlang, forked gen_tcp_socket) → libtailscale (C NIF → Go)\nwith:\n  tailscale_transport → gen_tailscale (clean Elixir GenServer) → ts_elixir (Rustler NIF → tailscale-rs)\n\nTwo repos:\n  1. gen_tailscale (new repo) — gen_tcp-compatible API, GenServer socket/listener, simulation test harness\n  2. tailscale_transport (this repo) — ThousandIsland transport (TCP + SSL), Plug\n\nDesign principles:\n  - Separate I/O from logic via a Transport behaviour (real ts_elixir vs simulator)\n  - Deterministic simulation testing: seeded fault injection, controlled scheduling\n  - Property-based testing (StreamData) against the simulator\n  - ~500-700 lines of production code, emphasis on testability over features",
   "id": "tailscal-oih",
   "labels": [],
   "priority": 2,
   "status": "open",
   "title": "Replace gen_tailscale/libtailscale with clean Elixir rewrite on top of ts_elixir",
   "type": "epic",
-  "updated_at": "2026-05-14T09:03:51Z"
+  "updated_at": "2026-05-14T09:20:07Z"
 }
