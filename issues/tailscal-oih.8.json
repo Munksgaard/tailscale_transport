@@ -1,7 +1,8 @@
 {
   "assignee": "",
   "blocked_by": [
-    "tailscal-oih.4"
+    "tailscal-oih.4",
+    "tailscal-oih.9"
   ],
   "blocks": [],
   "created": "2026-05-14T09:04:58Z",
@@ -13,5 +14,5 @@
   "status": "open",
   "title": "Test suite: unit, integration, and property tests",
   "type": "task",
-  "updated_at": "2026-05-14T09:20:45Z"
+  "updated_at": "2026-05-14T09:20:48Z"
 }
