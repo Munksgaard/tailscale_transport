@@ -6,6 +6,7 @@
   "blocks": [
     "tailscal-oih.4"
   ],
+  "closed_at": "2026-05-14T09:42:05Z",
   "created": "2026-05-14T09:04:22Z",
   "description": "GenServer wrapping a ts_elixir Tailscale.Tcp.Listener handle.\n\nManages Tailscale device lifecycle + listener.\n\nState:\n  - dev: Tailscale.t() (device handle from Tailscale.connect)\n  - listener: Tailscale.Tcp.Listener.t()\n  - local_addr: {ip, port}\n\nStartup flow:\n  1. Tailscale.connect(keys_file, opts) → dev handle\n  2. Tailscale.Tcp.listen(dev, addr, port) → listener handle\n  3. Tailscale.Tcp.Listener.local_addr(listener) → {ip, port}\n\nPublic API:\n  - accept(listener_pid) → {:ok, socket_pid} | {:error, reason}\n    Calls Tailscale.Tcp.Listener.accept(listener) (blocking, on dirty scheduler)\n    Spawns a GenTailscale.Socket for the accepted stream\n    Returns the socket pid\n  - accept(listener_pid, timeout) → same with timeout\n  - close(listener_pid) → :ok\n  - sockname(listener_pid) → {:ok, {ip, port}}\n\nConfig options (passed through from listen/2):\n  - hostname, authkey, dir, control_url, ephemeral — Tailscale device config\n  - keys_file — path to ts_elixir keys file\n  - Standard socket opts passed through to spawned sockets",
   "id": "tailscal-oih.3",
@@ -18,8 +19,8 @@
     }
   ],
   "priority": 2,
-  "status": "in_progress",
+  "status": "closed",
   "title": "Implement GenTailscale.Listener GenServer",
   "type": "task",
-  "updated_at": "2026-05-14T09:20:48Z"
+  "updated_at": "2026-05-14T09:42:05Z"
 }
