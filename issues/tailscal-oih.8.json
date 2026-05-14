@@ -14,11 +14,15 @@
     {
       "text": "22 property tests added covering:\n- Data integrity under partial reads/fragmentation (5 properties)\n- Active mode correctness (2 properties)\n- Failure modes: shutdown, connection drop, pending recv unblock,\n  owner death, send failures, drop_after_ops, double close/shutdown (11 properties)\n- Controlling process transfer with active messages (1 property)\n- Stats consistency (1 property)\n- Setopts round-trip and unknown option safety (2 properties)\n\nAll 44 tests (22 unit + 22 property) pass. 5.7s runtime.",
       "timestamp": "2026-05-14T11:15:26Z"
+    },
+    {
+      "text": "Sequence property tests added (7 properties). These randomize operation\nsequences per feedback_property_testing.md guidance.\n\nFound and fixed a real bug: close() didn't cancel pending recv tasks,\ncausing the GenServer to hang during shutdown when a recv was blocked\nin the simulator. Fix: cancel_reader() unlinks + kills the task on close.\n\nTotal: 51 tests (22 unit + 29 property), all passing.",
+      "timestamp": "2026-05-14T11:37:30Z"
     }
   ],
   "priority": 2,
   "status": "in_progress",
   "title": "Test suite: unit, integration, and property tests",
   "type": "task",
-  "updated_at": "2026-05-14T11:15:26Z"
+  "updated_at": "2026-05-14T11:37:30Z"
 }
