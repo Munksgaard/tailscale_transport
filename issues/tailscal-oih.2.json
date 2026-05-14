@@ -9,9 +9,15 @@
   "id": "tailscal-oih.2",
   "labels": [],
   "parent": "tailscal-oih",
+  "comments": [
+    {
+      "text": "Sketch complete: lib/gen_tailscale/socket.ex (~310 lines). GenServer wrapping ts_elixir stream with active mode, recv buffering, controlling_process, configurable message tags for SSL cb_info.",
+      "timestamp": "2026-05-14T09:08:19Z"
+    }
+  ],
   "priority": 2,
   "status": "in_progress",
   "title": "Implement GenTailscale.Socket GenServer",
   "type": "task",
-  "updated_at": "2026-05-14T09:05:19Z"
+  "updated_at": "2026-05-14T09:08:19Z"
 }
