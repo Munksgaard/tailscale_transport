@@ -1,5 +1,5 @@
 {
-  "assignee": "",
+  "assignee": "Philip Munksgaard",
   "blocked_by": [
     "tailscal-oih.5"
   ],
@@ -10,8 +10,8 @@
   "labels": [],
   "parent": "tailscal-oih",
   "priority": 2,
-  "status": "open",
+  "status": "in_progress",
   "title": "Update TailscaleTransport.Plug for new backend",
   "type": "task",
-  "updated_at": "2026-05-14T09:05:06Z"
+  "updated_at": "2026-05-14T11:53:54Z"
 }
