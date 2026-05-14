@@ -1,6 +1,8 @@
 {
   "assignee": "",
-  "blocked_by": [],
+  "blocked_by": [
+    "tailscal-oih.4"
+  ],
   "blocks": [],
   "created": "2026-05-14T09:04:40Z",
   "description": "New ThousandIsland.Transport implementation for SSL over Tailscale.\n\nUses Erlang :ssl with cb_info option pointing to GenTailscale:\n\n  cb_info: {GenTailscale, :tailscale, :tailscale_closed, :tailscale_error, :tailscale_passive}\n\nModule structure:\n  - listen/2: calls :ssl.listen with cb_info + user SSL opts (certfile, keyfile, etc.)\n  - accept/1: delegates to :ssl.transport_accept\n  - handshake/1: calls :ssl.handshake\n  - send/recv/close/etc: delegate to :ssl\n  - sockname/peername: delegate to :ssl\n  - secure?/0: returns true\n  - peercert/1: delegates to :ssl\n  - negotiated_protocol/1: delegates to :ssl\n  - connection_information/1: delegates to :ssl\n\nDepends on GenTailscale implementing the full cb_info contract.",
@@ -11,5 +13,5 @@
   "status": "open",
   "title": "Implement TailscaleTransport.SSL",
   "type": "task",
-  "updated_at": "2026-05-14T09:04:40Z"
+  "updated_at": "2026-05-14T09:05:06Z"
 }
