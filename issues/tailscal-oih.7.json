@@ -4,14 +4,15 @@
     "tailscal-oih.5"
   ],
   "blocks": [],
+  "closed_at": "2026-05-14T11:58:26Z",
   "created": "2026-05-14T09:04:49Z",
   "description": "The current Plug uses:\n  - :gen_tailscale_socket.start_loopback(socket) → {address, proxy_cred, local_api_cred}\n  - :gen_tailscale_socket.getremoteaddr(socket) → remote IP\n\nThese need to be replaced with ts_elixir equivalents.\n\nFor remote IP:\n  - GenTailscale.peername(socket) should work directly\n\nFor user info (whois):\n  - ts_elixir has Tailscale.peer_by_tailnet_ip(dev, ip) which could replace the LocalAPI whois call\n  - OR keep the LocalAPI approach if ts_elixir adds loopback support\n  - Need to investigate what peer_by_tailnet_ip returns vs the LocalAPI whois response\n\nAlso need to update the adapter pattern match — currently digs into\nBandit adapter internals to find the gen_tailscale socket.",
   "id": "tailscal-oih.7",
   "labels": [],
   "parent": "tailscal-oih",
   "priority": 2,
-  "status": "in_progress",
+  "status": "closed",
   "title": "Update TailscaleTransport.Plug for new backend",
   "type": "task",
-  "updated_at": "2026-05-14T11:53:54Z"
+  "updated_at": "2026-05-14T11:58:26Z"
 }
